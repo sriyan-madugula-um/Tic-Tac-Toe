@@ -1,7 +1,7 @@
 public class AmazonShoppingCart
 {
     public static void main(String[] args)
-    {   int TVQuantity = 1;
+    {   int TVQuantity = 2;
         double TVPrice = 2499.99;
         String TVName = "Samsung 65 in Full HD TV";
         
