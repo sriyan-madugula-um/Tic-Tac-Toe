@@ -13,7 +13,7 @@ public class AmazonShoppingCart
         double penPrice = 1.99;
         String penName = "BIC Ballpoint Pens";
         
-        int bedQuantity = 1;
+        int bedQuantity = 16;
         double bedPrice = 749.99;
         String bedName = "LUCID Twin Size Bed";
         
