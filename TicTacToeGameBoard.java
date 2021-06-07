@@ -22,16 +22,16 @@ public class TicTacToeGameBoard
 
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a number between 1-9 for your position");
-        int position = input.nextInt();
         
         char variable = ' ';
-        for (int i = 0; i < 2 /*need to make a variable for this*/; i++)
+        for (int i = 0; i < 10 /*need to make a variable for this*/; i++)
         {
+            int position = input.nextInt();
             if (i % 2 == 0)
             {
                 variable = 'o';
             }
-            else
+            if (i % 2 == 1)
             {
                 variable = 'x';
             }
@@ -71,18 +71,19 @@ public class TicTacToeGameBoard
             {
                 gameBoard[4][4] = variable;
             }
-        }
-        
-        for(int i = 0; i < 5; i++)
-        {
-            char[] row = gameBoard[i];
             for(int j = 0; j < 5; j++)
             {
-                char c = row[j];
-                System.out.print(c);
+                char[] row = gameBoard[j];
+                    for(int k = 0; k < 5; k++)
+                    {
+                        char c = row[k];
+                        System.out.print(c);
+                    }
+                System.out.println();
             }
-            System.out.println();
         }
+        
+        
 
     }
     
