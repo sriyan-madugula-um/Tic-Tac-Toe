@@ -3,7 +3,7 @@ public class TicTacToe
 {
     public static void main(String[] args)
     {
-        System.out.println("Instructions: Here is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
+        System.out.println("Instructions: This is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
         char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
            {'-', '+', '-', '+', '-'},
            {' ', '|', ' ', '|', ' '},
@@ -88,10 +88,16 @@ public class TicTacToe
                     }
                 System.out.println();
             }
-            //TicTacToeTester.checkWinner();
+            String result = TicTacToeTester.checkWinner(gameBoard);
+            if (result.length() > 1)
+            {
+                break;
+            }
+            if (i == 8)
+            {
+                System.out.println("It's a draw!");
+            }
         }
-
-        
     }
     
     
