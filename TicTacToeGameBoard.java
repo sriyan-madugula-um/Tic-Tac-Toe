@@ -1,8 +1,9 @@
 import java.util.*;
-public class TicTacToeGameBoard
+public class TicTacToe
 {
     public static void main(String[] args)
     {
+        System.out.println("Instructions: Here is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
         char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
            {'-', '+', '-', '+', '-'},
            {' ', '|', ' ', '|', ' '},
@@ -21,19 +22,25 @@ public class TicTacToeGameBoard
         }
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter a number between 1-9 for your position");
+        System.out.println();
+        System.out.println("Player 1, enter a number between 1-9 for your position: ");
+        System.out.println();
         
         char variable = ' ';
-        for (int i = 0; i < 10 /*need to make a variable for this*/; i++)
+        for (int i = 0; i < 9; i++)
         {
             int position = input.nextInt();
             if (i % 2 == 0)
             {
-                variable = 'o';
+                variable = 'x';
+                System.out.println("Player 2, enter your position: ");
+                System.out.println();
             }
             if (i % 2 == 1)
             {
-                variable = 'x';
+                variable = 'o';
+                System.out.println("Player 1, enter your position: ");
+                System.out.println();
             }
             if (position == 1)
             {
@@ -81,10 +88,11 @@ public class TicTacToeGameBoard
                     }
                 System.out.println();
             }
+            //TicTacToeTester.checkWinner();
         }
-        
-        
 
+        
     }
+    
     
 }
