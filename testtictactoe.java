@@ -1,146 +1,64 @@
 import java.util.*;
-public class TicTacToe
-{
-    public static void main(String[] args)
+public class TicTacToeTester
+{   
+    private char[][] board;
+    static String checkWinner(char[][] gameBoard)
     {
-        System.out.println("Instructions: Here is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
-        char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
-           {'-', '+', '-', '+', '-'},
-           {' ', '|', ' ', '|', ' '},
-           {'-', '+', '-', '+', '-'},
-           {' ', '|', ' ', '|', ' '}};
-           
-        for(int i = 0; i < 5; i++)
+        String result = "";
+        char[][] board = gameBoard;
+        char line = ' ';
+        for (int a = 0; a < 8; a++) 
         {
-            char[] row = gameBoard[i];
-            for(int j = 0; j < 5; j++)
+            switch (a) 
             {
-                char c = row[j];
-                System.out.print(c);
+            case 0:
+                line = (char)(board[0][0] + board[0][2] + board[0][4]);
+                break;
+            case 1:
+                line = (char)(board[2][0] + board[2][2] + board[2][4]);
+                break;
+            case 2:
+                line = (char)(board[4][0] + board[4][2] + board[4][4]);
+                break;
+            case 3:
+                line = (char)(board[0][0] + board[2][0] + board[4][0]);
+                break;
+            case 4:
+                line = (char)(board[0][2] + board[2][2] + board[4][2]);
+                break;
+            case 5:
+                line = (char)(board[0][4] + board[2][4] + board[4][4]);
+                break;
+            case 6:
+                line = (char)(board[0][0] + board[2][2] + board[4][4]);
+                break;
+            case 7:
+                line = (char)(board[0][4] + board[2][2] + board[4][0]);
+                break;
             }
-            System.out.println();
-        }
-
-        Scanner input = new Scanner(System.in);
-        System.out.println();
-        System.out.println("Player 1, enter a number between 1-9 for your position: ");
-        System.out.println();
-        
-        char variable = ' ';
-        for (int i = 0; i < 9; i++)
-        {
-            int position = input.nextInt();
-            if (i % 2 == 0)
+            //For x winner
+            if (line == 'x' + 'x' + 'x') 
             {
-                variable = 'x';
-                System.out.println("Player 2, enter your position: ");
-                System.out.println();
-            }
-            if (i % 2 == 1)
-            {
-                variable = 'o';
-                System.out.println("Player 1, enter your position: ");
-                System.out.println();
-            }
-            if (position == 1)
-            {
-                gameBoard[0][0] = variable;
-            }
-            if (position == 2)
-            {
-                gameBoard[0][2] = variable;
-            }
-            if (position == 3)
-            {
-                gameBoard[0][4] = variable;
-            }
-            if (position == 4)
-            {
-                gameBoard[2][0] = variable;
-            }
-            if (position == 5)
-            {
-                gameBoard[2][2] = variable;
-            }
-            if (position == 6)
-            {
-                gameBoard[2][4] = variable;
-            }
-            if (position == 7)
-            {
-                gameBoard[4][0] = variable;
-            }
-            if (position == 8)
-            {
-                gameBoard[4][2] = variable;
-            }
-            if (position == 9)
-            {
-                gameBoard[4][4] = variable;
-            }
-            for(int j = 0; j < 5; j++)
-            {
-                char[] row = gameBoard[j];
-                    for(int k = 0; k < 5; k++)
-                    {
-                        char c = row[k];
-                        System.out.print(c);
-                    }
-                System.out.println();
-            }
-            //TicTacToeTester.checkWinner();
-        }
-
-        
-    }
-    
-    
-}
-    
-    static ArrayList<Integer> playerPos = new ArrayList<Integer>();
-    static ArrayList<Integer> cpuPos = new ArrayList<Integer>(); 
-     public static String checkWinner() {
-        //Rows
-        List topside = Arrays.asList(1, 2, 3);
-        List midside = Arrays.asList(4, 5, 6);
-        List botside = Arrays.asList(7, 8, 9);
-        //Collumns
-        List leftup = Arrays.asList(1, 4, 7);
-        List midup = Arrays.asList(2, 5, 8);
-        List rightup = Arrays.asList(3, 6, 9);
-        //diagonals
-        List crossltr = Arrays.asList(1, 5, 9);
-        List crossrtl = Arrays.asList(7, 5, 3);
-          List<List> winning = new ArrayList<List>();
-        //Rows
-        winning.add(topside);
-        winning.add(midside);
-        winning.add(botside);
-        //Collumns
-        winning.add(leftup);
-        winning.add(midup);
-        winning.add(rightup);
-        //diagonals
-        winning.add(crossltr);
-        winning.add(crossrtl);
-        
-        String result = checkWinner();
-            if (result.length() > 0) {
+                result = "Player 1 wins!";
                 System.out.println(result);
-                
+                break;
             }
-
-                 for (List l : winning) {
-            if (playerPos.containsAll(l)) {
-                return "Victory";
-            } else if (cpuPos.containsAll(l)) {
-                return "Loss";
-            } else if (playerPos.size() + cpuPos.size() == 9) {
-                return "Draw";
+            
+              
+            // For o winner
+            else if (line == 'o' + 'o' + 'o') 
+            {
+                result = "Player 2 wins!";
+                System.out.println(result);
+                break;
             }
+            else
+            {
+                result = "";
+                System.out.print(result);
+            }
+        }
 
-
-}
- return "";
-}
+        return result;
+    }
 }
