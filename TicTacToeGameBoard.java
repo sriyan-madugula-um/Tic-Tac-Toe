@@ -37,13 +37,13 @@ public class TicTacToe
         for (int i = 0; i < 9; i++)
         {
             int position = input.nextInt();
-            if (i % 2 == 0)
+            if (i % 2 == 0 && position >= 1 && position <= 9)
             {
                 variable = player1char;
                 System.out.println(TicTacToeTester.getPlayer2() + ", enter your position: ");
                 System.out.println();
             }
-            if (i % 2 == 1)
+            if (i % 2 == 1 && position >= 1 && position <= 9)
             {
                 variable = player2char;
                 System.out.println(TicTacToeTester.getPlayer1() + ", enter your position: ");
@@ -51,39 +51,89 @@ public class TicTacToe
             }
             if (position == 1)
             {
-                gameBoard[0][0] = variable;
+               if (gameBoard[0][0] != ' ') 
+               {
+                  System.out.println("Try another spot");
+                  i = i-1;
+               }
+               gameBoard[0][0] = variable;     
             }
             if (position == 2)
             {
+                if (gameBoard[0][2] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[0][2] = variable;
             }
             if (position == 3)
             {
+                if (gameBoard[0][4] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[0][4] = variable;
             }
             if (position == 4)
             {
+                if (gameBoard[2][0] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[2][0] = variable;
             }
             if (position == 5)
             {
+                if (gameBoard[2][2] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[2][2] = variable;
             }
             if (position == 6)
             {
+                if (gameBoard[2][4] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[2][4] = variable;
             }
             if (position == 7)
             {
+                if (gameBoard[4][0] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[4][0] = variable;
             }
             if (position == 8)
             {
+                if (gameBoard[4][2] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[4][2] = variable;
             }
             if (position == 9)
             {
+                if (gameBoard[4][4] != ' ') 
+                {
+                  System.out.println("Try another spot");
+                  i = i-1;
+                }
                 gameBoard[4][4] = variable;
+            }
+            if (position < 1 || position > 9)
+            {
+                System.out.println("Enter a position from 1-9 please.");
+                i = i-1;
             }
             TicTacToeTester.returnGameBoard(gameBoard);
             
