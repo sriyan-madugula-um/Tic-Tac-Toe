@@ -2,6 +2,10 @@ import java.util.*;
 public class TicTacToeTester
 {   
     private char[][] board;
+    private static String player1;
+    private static String player2;
+    private static char char1;
+    private static char char2;
     static String checkWinner(char[][] gameBoard)
     {
         String result = "";
@@ -37,18 +41,18 @@ public class TicTacToeTester
                 break;
             }
             //For x winner
-            if (line == 'x' + 'x' + 'x') 
+            if (line == char1 + char1 + char1) 
             {
-                result = "Player 1 wins!";
+                result = player1 + " wins!";
                 System.out.println(result);
                 break;
             }
             
               
             // For o winner
-            else if (line == 'o' + 'o' + 'o') 
+            else if (line == char2 + char2 + char2) 
             {
-                result = "Player 2 wins!";
+                result = player2 + " wins!";
                 System.out.println(result);
                 break;
             }
@@ -61,4 +65,36 @@ public class TicTacToeTester
 
         return result;
     }
+    static void createPlayer1(String player1Name, char player1Char)
+    {
+        player1 = player1Name;
+        char1 = player1Char;
+    }
+    static void createPlayer2(String player2Name, char player2Char)
+    {
+        player2 = player2Name;
+        char2 = player2Char;
+    }
+    static String getPlayer1()
+    {
+        return player1;
+    }
+    static String getPlayer2()
+    {
+        return player2;
+    }
+    static void returnGameBoard(char[][] gameBoard)
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            char[] row = gameBoard[i];
+            for(int j = 0; j < 5; j++)
+            {
+                char c = row[j];
+                System.out.print(c);
+            }
+            System.out.println();
+        }
+    }
+    
 }
