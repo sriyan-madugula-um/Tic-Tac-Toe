@@ -1,100 +1,191 @@
 import java.util.*;
 public class TicTacToeTester
-{   
-    private char[][] board;
-    private static String player1;
-    private static String player2;
-    private static char char1;
-    private static char char2;
-    static String checkWinner(char[][] gameBoard)
+{
+    public static void main(String[] args)
     {
-        String result = "";
-        char[][] board = gameBoard;
-        char line = ' ';
-        for (int a = 0; a < 8; a++) 
-        {
-            switch (a) 
-            {
-            case 0:
-                line = (char)(board[0][0] + board[0][2] + board[0][4]);
-                break;
-            case 1:
-                line = (char)(board[2][0] + board[2][2] + board[2][4]);
-                break;
-            case 2:
-                line = (char)(board[4][0] + board[4][2] + board[4][4]);
-                break;
-            case 3:
-                line = (char)(board[0][0] + board[2][0] + board[4][0]);
-                break;
-            case 4:
-                line = (char)(board[0][2] + board[2][2] + board[4][2]);
-                break;
-            case 5:
-                line = (char)(board[0][4] + board[2][4] + board[4][4]);
-                break;
-            case 6:
-                line = (char)(board[0][0] + board[2][2] + board[4][4]);
-                break;
-            case 7:
-                line = (char)(board[0][4] + board[2][2] + board[4][0]);
-                break;
-            }
-            //For x winner
-            if (line == char1 + char1 + char1) 
-            {
-                result = player1 + " wins!";
-                System.out.println(result);
-                break;
-            }
-            
-              
-            // For o winner
-            else if (line == char2 + char2 + char2) 
-            {
-                result = player2 + " wins!";
-                System.out.println(result);
-                break;
-            }
-            else
-            {
-                result = "";
-                System.out.print(result);
-            }
-        }
+        System.out.println("Instructions: This is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
+        
+        Scanner input = new Scanner(System.in);
+        System.out.print("Player 1, enter your first name: ");
+        String player1 = input.next();
+        
+        System.out.print("Player 2, enter your first name: ");
+        String player2 = input.next();
+        
+        System.out.print(player1 + ", enter the character that you want for the game: ");
+        char player1char = input.next().charAt(0);
+        
+        System.out.print(player2 + ", enter the character that you want for the game: ");
+        char player2char = input.next().charAt(0);
 
-        return result;
-    }
-    static void createPlayer1(String player1Name, char player1Char)
-    {
-        player1 = player1Name;
-        char1 = player1Char;
-    }
-    static void createPlayer2(String player2Name, char player2Char)
-    {
-        player2 = player2Name;
-        char2 = player2Char;
-    }
-    static String getPlayer1()
-    {
-        return player1;
-    }
-    static String getPlayer2()
-    {
-        return player2;
-    }
-    static void returnGameBoard(char[][] gameBoard)
-    {
-        for(int i = 0; i < 5; i++)
+        TicTacToe.createPlayer1(player1, player1char);
+        TicTacToe.createPlayer2(player2, player2char);
+        
+        char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
+           {'-', '+', '-', '+', '-'},
+           {' ', '|', ' ', '|', ' '},
+           {'-', '+', '-', '+', '-'},
+           {' ', '|', ' ', '|', ' '}};
+           
+        TicTacToe.returnGameBoard(gameBoard);
+
+        System.out.println();
+        System.out.print(TicTacToe.getPlayer1() + ", enter a number between 1-9 for your position: ");
+        System.out.println();
+        
+        char variable = ' ';
+        
+        for (int i = 0; i < 9; i++)
         {
-            char[] row = gameBoard[i];
-            for(int j = 0; j < 5; j++)
+            int position = input.nextInt();
+            if (TicTacToe.check(i) == "even" && position >= 1 && position <= 9)
             {
-                char c = row[j];
-                System.out.print(c);
+                variable = player1char;
+                System.out.println(TicTacToe.getPlayer2() + ", enter your position: ");
+                System.out.println();
             }
-            System.out.println();
+            if (TicTacToe.check(i) == "odd" && position >= 1 && position <= 9)
+            {
+                variable = player2char;
+                System.out.println(TicTacToe.getPlayer1() + ", enter your position: ");
+                System.out.println();
+            }
+            if (position == 1)
+            {
+               if (gameBoard[0][0] != ' ') 
+               {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+
+               }
+               else
+               {
+                   gameBoard[0][0] = variable;
+               }
+            }
+            if (position == 2)
+            {
+                if (gameBoard[0][2] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                  gameBoard[0][2] = variable;
+                }
+            }
+            if (position == 3)
+            {
+                if (gameBoard[0][4] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[0][4] = variable;
+                }
+            }
+            if (position == 4)
+            {
+                if (gameBoard[2][0] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[2][0] = variable;
+                }
+            }
+            if (position == 5)
+            {
+                if (gameBoard[2][2] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[2][2] = variable;
+                }
+            }
+            if (position == 6)
+            {
+                if (gameBoard[2][4] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[2][4] = variable;
+                }
+            }
+            if (position == 7)
+            {
+                if (gameBoard[4][0] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[4][0] = variable;
+                }
+            }
+            if (position == 8)
+            {
+                if (gameBoard[4][2] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[4][2] = variable;
+                }
+            }
+            if (position == 9)
+            {
+                if (gameBoard[4][4] != ' ') 
+                {
+                  System.out.println("Try another spot: ");
+                  i = i-1;
+                  
+                }
+                else
+                {
+                    gameBoard[4][4] = variable;
+                }
+            }
+            if (position < 1 || position > 9)
+            {
+                System.out.println("Enter a position from 1-9 please.");
+                i=i-1;
+            }
+            TicTacToe.returnGameBoard(gameBoard);
+            
+            String result = TicTacToe.checkWinner(gameBoard);
+            if (result.length() > 1)
+            {
+                break;
+            }
+            if (i == 8)
+            {
+                System.out.println("It's a draw!");
+            }
         }
+        
     }
+    
     
 }
