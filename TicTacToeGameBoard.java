@@ -6,9 +6,20 @@ public class TicTacToe
         System.out.println("Instructions: This is a 2-player Tic Tac Toe Game. Enter a position from 1-9, corresponding left to right and top to bottom.");
         
         Scanner input = new Scanner(System.in);
+        System.out.print("Player 1, enter your first name: ");
+        String player1 = input.next();
+        
+        System.out.print("Player 2, enter your first name: ");
+        String player2 = input.next();
+        
+        System.out.print(player1 + ", enter the character that you want for the game: ");
+        char player1char = input.next().charAt(0);
+        
+        System.out.print(player2 + ", enter the character that you want for the game: ");
+        char player2char = input.next().charAt(0);
 
-        TicTacToeTester.createPlayer1("Sriyan", 'x');
-        TicTacToeTester.createPlayer2("Aksheet", 'o');
+        TicTacToeTester.createPlayer1(player1, player1char);
+        TicTacToeTester.createPlayer2(player2, player2char);
         
         char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
            {'-', '+', '-', '+', '-'},
@@ -28,13 +39,13 @@ public class TicTacToe
             int position = input.nextInt();
             if (i % 2 == 0)
             {
-                variable = 'x';
+                variable = player1char;
                 System.out.println(TicTacToeTester.getPlayer2() + ", enter your position: ");
                 System.out.println();
             }
             if (i % 2 == 1)
             {
-                variable = 'o';
+                variable = player2char;
                 System.out.println(TicTacToeTester.getPlayer1() + ", enter your position: ");
                 System.out.println();
             }
